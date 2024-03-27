@@ -39,6 +39,6 @@ def handle_specific_message(message):
 @bot.message_handler(func=lambda message: access_granted)
 def handle_movie_code(message):
     movie_code = message.text
-    bot.send_message(message.chat.id, f"Вы ввели вы ввели не существующий код : {movie_code}")
+    bot.send_message(message.chat.id, f"Вы ввели не существующий код : {movie_code}")
 
 bot.polling(none_stop=True)
