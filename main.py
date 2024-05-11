@@ -12,13 +12,13 @@ def start(message):
     button2 = types.InlineKeyboardButton(text="Проверить подписку", callback_data="check_subscription")
     keyboard.add(button1)
     keyboard.add(button2)
-    
+
     # Отправка сообщения с клавиатурой
     bot.send_message(message.chat.id, "Здравствуйте, {}! Если вы ищите фильмы, сначала подпишитесь на канал".format(message.from_user.first_name), reply_markup=keyboard)
 
-@bot.callback_query_handler(func=lambda call: True)   
+@bot.callback_query_handler(func=lambda call: True)
 def callback_query(call):
-    global access_granted 
+    global access_granted
     access_granted = False
     if call.data == "check_subscription":
         user_id = call.from_user.id
@@ -31,15 +31,21 @@ def callback_query(call):
             bot.send_message(call.message.chat.id, "Пожалуйста, введите код фильма:")
         else:
             bot.send_message(call.message.chat.id, "Для доступа к поиску фильмов подпишитесь на канал Crypto_step")
-            
+
 
 @bot.message_handler(func=lambda message: access_granted)
 def handle_movie_code(message):
-    if message.text == "333":
-        bot.send_message(message.chat.id, "Иди на хуй!")
+    movie_codes = ["333", "777", "1997"]  # Список допустимых кодов фильмов
+    if message.text in movie_codes:
+        if message.text == "333":
+            bot.send_message(message.chat.id, "Фильм с кодом 333 найден!")
+        elif message.text == "777":
+            bot.send_message(message.chat.id, "Фильм с кодом 777 найден!")
+        elif message.text == "1997":
+            bot.send_message(message.chat.id, "Название фильма: 'По соображениям совести'")
     else:
-        movie_code = message.text
-        bot.send_message(message.chat.id, f"Вы ввели несуществующий код: {movie_code}")
+      bot.send_message(message.chat.id, f"Вы ввели несуществующий код: {message.text}")
+
 
 @bot.message_handler(func=lambda message: not access_granted)
 def handle_invalid_access(message):
