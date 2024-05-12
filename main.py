@@ -8,7 +8,7 @@ access_granted = False  # Изначально у пользователя не�
 @bot.message_handler(commands=['start'])
 def start(message):
     keyboard = types.InlineKeyboardMarkup()
-    button1 = types.InlineKeyboardButton(text="Crypto_step", url="https://t.me/my_crypto_step")
+    button1 = types.InlineKeyboardButton(text="Crypto_step", url="https://t.me/+ZJnoA_xfVXM5ODU6")
     button2 = types.InlineKeyboardButton(text="Проверить подписку", callback_data="check_subscription")
     keyboard.add(button1)
     keyboard.add(button2)
