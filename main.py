@@ -35,7 +35,7 @@ def callback_query(call):
 
 @bot.message_handler(func=lambda message: access_granted)
 def handle_movie_code(message):
-    movie_codes = ["333", "777", "1997"]  # Список допустимых кодов фильмов
+    movie_codes = ["333", "777", "1997", "2019"]  # Список допустимых кодов фильмов
     if message.text in movie_codes:
         if message.text == "333":
             bot.send_message(message.chat.id, "Фильм с кодом 333 найден!")
@@ -43,6 +43,8 @@ def handle_movie_code(message):
             bot.send_message(message.chat.id, "Фильм с кодом 777 найден!")
         elif message.text == "1997":
             bot.send_message(message.chat.id, "Название фильма: 'По соображениям совести'")
+        elif message.text == "2019":
+            bot.send_message(message.chat.id, "Название фильма: 'Бронкская история'")
     else:
       bot.send_message(message.chat.id, f"Вы ввели несуществующий код: {message.text}")
 
