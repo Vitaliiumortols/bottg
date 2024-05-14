@@ -8,7 +8,7 @@ access_granted = False  # Изначально у пользователя не�
 @bot.message_handler(commands=['start'])
 def start(message):
     keyboard = types.InlineKeyboardMarkup()
-    button1 = types.InlineKeyboardButton(text="Crypto_step", url="https://t.me/+ZJnoA_xfVXM5ODU6")
+    button1 = types.InlineKeyboardButton(text="Crypto_step", url="https://t.me/crypto_stepss")
     button2 = types.InlineKeyboardButton(text="Проверить подписку", callback_data="check_subscription")
     keyboard.add(button1)
     keyboard.add(button2)
@@ -22,7 +22,7 @@ def callback_query(call):
     access_granted = False
     if call.data == "check_subscription":
         user_id = call.from_user.id
-        chat_id = "@my_crypto_step"
+        chat_id = "@crypto_stepss"
         status = ['creator', 'administrator', 'member']
         user_status = bot.get_chat_member(chat_id, user_id).status
         if user_status in status:
@@ -42,9 +42,9 @@ def handle_movie_code(message):
         elif message.text == "777":
             bot.send_message(message.chat.id, "Фильм с кодом 777 найден!")
         elif message.text == "1997":
-            bot.send_message(message.chat.id, "Название фильма: 'По соображениям совести'")
+            bot.send_message(message.chat.id, "Название фильма:'По соображениям совести'")
         elif message.text == "2019":
-            bot.send_message(message.chat.id, "Название фильма: 'Бронкская история'")
+            bot.send_message(message.chat.id, "Название фильма:'Бронкская история'")
     else:
       bot.send_message(message.chat.id, f"Вы ввели несуществующий код: {message.text}")
 
